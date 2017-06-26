@@ -10,9 +10,14 @@ class Api::V2::CarsController < ApplicationController
   end
 
   def create
-    @car = Car.create(vin: params[:vin],
+    @car = Car.new(vin: params[:vin],
                       manufacture: params[:manufacture])
-    render :show
+    if @car.save
+      render "show.json.jbuilder"
+    else
+      puts "FAIL!!"
+      render json: { errors: @car.errors.full_messages }, status: 422
+    end
   end
 
   def update

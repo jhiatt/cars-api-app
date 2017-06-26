@@ -19,4 +19,7 @@ Rails.application.routes.draw do
       delete "/cars/:id", to: 'cars#destroy'
     end
   end
+  #cars view
+  root to: 'cars#index'
+  get "/cars", to: 'cars#index'
 end

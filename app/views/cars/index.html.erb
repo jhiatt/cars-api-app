@@ -1,10 +1,21 @@
-<% @cars.each do |car| %>
+<div id="app">
 
-<h3>
-<%= car.manufacture %>
-</h3>
-<p>
-  <%= car.vin %>
-</p>
+{{fun}}
 
-<% end %>
+  <div>Add a vin<input v-model="newVin"></div>
+  <div>Add a manufacture<input v-model="newManufacture"><button v-on:click="addCar()">Add car</button></div>
+
+  <ul>
+    <li v-for="error in errors">{{error}} </li>
+  </ul>
+
+  <div v-for="car in cars">
+    <h3>{{ car.manufacture }}</h3>
+    <p>{{car.vin}}</p>
+<!--     <a v-on:click="deleteCar">delete</a>
+ -->  </div>
+
+
+
+ 
+</div>
